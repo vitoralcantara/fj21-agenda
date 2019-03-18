@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +28,6 @@ public class AdicionaContatoServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = resp.getWriter();
-
 		String nome = req.getParameter("nome");
 		String endereco = req.getParameter("endereco");
 		String email = req.getParameter("email");
@@ -39,6 +38,7 @@ public class AdicionaContatoServlet extends HttpServlet {
 			dataNascimento = Calendar.getInstance();
 			dataNascimento.setTime(date);
 		} catch (ParseException e) {
+			PrintWriter out = new PrintWriter(resp.getWriter());
 			out.println("Erro de conversão da data");
 			return;
 		}
@@ -50,10 +50,7 @@ public class AdicionaContatoServlet extends HttpServlet {
 		contato.setDataNascimento(dataNascimento);
 		ContatoDao dao = new ContatoDao();
 		dao.adiciona(contato);
-		out.println("<html>");
-		out.println("<body>");
-		out.println("Contato " + contato.getNome() + " adicionado com sucesso");
-		out.println("</body>");
-		out.println("</html>");
+		RequestDispatcher rd = req.getRequestDispatcher("/contato-adicionado.jsp");
+		rd.forward(req, resp);
 	}
 }
