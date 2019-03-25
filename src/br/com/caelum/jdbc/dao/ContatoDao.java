@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import br.com.caelum.jdbc.ConnectionFactory;
 import br.com.caelum.jdbc.modelo.Contato;
 
@@ -28,7 +30,7 @@ public class ContatoDao {
 			
 			stmt.setString(1, contato.getNome());
 			stmt.setString(2, contato.getEmail());
-			stmt.setString(3, contato.getEndereço());
+			stmt.setString(3, contato.getEndereco());
 			stmt.setDate(4, new Date(contato.getDataNascimento().getTimeInMillis()));
 			
 			stmt.execute();
@@ -60,6 +62,17 @@ public class ContatoDao {
 			rs.close();
 			stmt.close();
 			return contatos;
+		}catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void remove(Contato contato) {
+		try {
+			PreparedStatement stmt = connection.prepareStatement("delete from contatos where id=?");
+			stmt.setLong(1,contato.getId());
+			stmt.execute();
+			stmt.close();
 		}catch(SQLException e) {
 			throw new RuntimeException(e);
 		}

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Contato ${param.nome} adicionado com sucesso.
+<h1>Página da primeira lógica</h1>
+
 </body>
 </html>
