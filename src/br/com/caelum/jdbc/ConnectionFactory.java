@@ -11,16 +11,10 @@ public class ConnectionFactory {
 	
 	public Connection getConnection() {
 		try {
-			Class.forName("org.sqlite.JDBC");
-			return DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Vítor\\eclipse-workspace\\fj21-agenda\\WebContent\\WEB-INF\\db\\fj21.db");
+	        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	        return DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=fj21;integratedSecurity=true;");
 		}catch(SQLException | ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		}
-	}
-	
-	public static void main(String[] args) {
-		Connection c = new ConnectionFactory().getConnection();
-		ContatoDao cd = new ContatoDao();
-		cd.adiciona(new Contato());
 	}
 }
