@@ -2,6 +2,7 @@ package br.com.caelum.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -48,7 +49,8 @@ public class AdicionaContatoServlet extends HttpServlet {
 		contato.setEndereço(endereco);
 		contato.setEmail(email);
 		contato.setDataNascimento(dataNascimento);
-		ContatoDao dao = new ContatoDao();
+		Connection connection = (Connection)req.getAttribute("conexao");
+		ContatoDao dao = new ContatoDao(connection);
 		dao.adiciona(contato);
 		RequestDispatcher rd = req.getRequestDispatcher("/contato-adicionado.jsp");
 		rd.forward(req, resp);

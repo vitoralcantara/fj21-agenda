@@ -19,7 +19,7 @@
 		<tr>
 			<td><%=contato.getNome()%></td>
 			<td><%=contato.getEmail()%></td>
-			<td><%=contato.getEndereço()%></td>
+			<td><%=contato.getEndereco()%></td>
 			<% SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
 				Date data = contato.getDataNascimento().getTime();
 			   String dataFormatada = dateFormater.format(data);
