@@ -1,15 +1,15 @@
 import 'package:sqflite/sqflite.dart';
 
-class Map {
+class ValorantMap {
   final String name;
 
-  Map({this.name});
+  ValorantMap({this.name});
 
   Map<String, dynamic> toMap() {
     return {'name': name};
   }
 
-  Future<void> insertMapImage(Future<Database> database, Tax tax) async {
+  Future<void> insertValorantMapImage(Future<Database> database) async {
     // Get a reference to the database.
     final Database db = await database;
 
@@ -18,7 +18,7 @@ class Map {
     //
     // In this case, replace any previous data.
     await db.insert(
-      'tax',
+      'map',
       this.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );

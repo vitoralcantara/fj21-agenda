@@ -2,16 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:valorant_self_statistics/dao/Database.dart';
 import 'package:valorant_self_statistics/model/Character.dart';
+import 'package:valorant_self_statistics/model/Game.dart';
 import 'package:valorant_self_statistics/model/ValorantMap.dart';
+import 'package:valorant_self_statistics/ui/SelectCharacterRecommendPage.dart';
 
-class ChooseTime extends StatefulWidget {
+class ChooseTeam extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _ChooseTime();
+  State<StatefulWidget> createState() => _ChooseTeam();
 }
 
-class _ChooseTime extends State<ChooseTime> {
+class _ChooseTeam extends State<ChooseTeam> {
   String valorantMapDropDownValue;
-  String selectedCharacter;
   List<String> otherTeamCharacters = ["", "", "", ""];
 
   @override
@@ -27,7 +28,6 @@ class _ChooseTime extends State<ChooseTime> {
                   switch (snapshot.connectionState) {
                     case ConnectionState.none:
                     case ConnectionState.waiting:
-                    case ConnectionState.active:
                       return CircularProgressIndicator();
                     case ConnectionState.done:
                       return DropdownButton(
@@ -156,9 +156,21 @@ class _ChooseTime extends State<ChooseTime> {
                       return null;
                   }
                 }),
-            TextButton(onPressed: (){
-
-            }, child: Text("Ver resultado"))
+            TextButton(
+                onPressed: () {
+                  Game currentGame = Game(
+                      vMap: ValorantMap(name: valorantMapDropDownValue),
+                      otherTeamCharacters:
+                          List.generate(otherTeamCharacters.length, (i) {
+                        return Character(name: otherTeamCharacters[i]);
+                      }));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              SelectCharacterRecommendPage(currentGame)));
+                },
+                child: Text("Ver resultado"))
           ],
         ),
       ),
