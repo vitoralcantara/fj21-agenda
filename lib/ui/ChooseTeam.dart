@@ -4,6 +4,7 @@ import 'package:valorant_self_statistics/dao/Database.dart';
 import 'package:valorant_self_statistics/model/Character.dart';
 import 'package:valorant_self_statistics/model/Game.dart';
 import 'package:valorant_self_statistics/model/ValorantMap.dart';
+import 'package:valorant_self_statistics/static/CurrentGame.dart';
 import 'package:valorant_self_statistics/ui/SelectCharacterRecommendPage.dart';
 
 class ChooseTeam extends StatefulWidget {
@@ -158,7 +159,7 @@ class _ChooseTeam extends State<ChooseTeam> {
                 }),
             TextButton(
                 onPressed: () {
-                  Game currentGame = Game(
+                  CurrentGame.currentGame = Game(
                       vMap: ValorantMap(name: valorantMapDropDownValue),
                       otherTeamCharacters:
                           List.generate(otherTeamCharacters.length, (i) {
@@ -168,7 +169,7 @@ class _ChooseTeam extends State<ChooseTeam> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              SelectCharacterRecommendPage(currentGame)));
+                              SelectCharacterRecommendPage()));
                 },
                 child: Text("Ver resultado"))
           ],

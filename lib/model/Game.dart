@@ -17,6 +17,7 @@ class Game {
   final int wincount;
   final int losecount;
   final int mvpcount;
+  final int ffcount;
 
   Game(
       {this.wincount,
@@ -24,10 +25,11 @@ class Game {
       this.vMap,
       this.selectedCharacter,
       this.otherTeamCharacters,
-      this.mvpcount});
+      this.mvpcount,
+      this.ffcount});
 
   int getBalance() {
-    return wincount + mvpcount - losecount;
+    return wincount + mvpcount - losecount - ffcount;
   }
 
   Map<String, dynamic> toMap() {
@@ -44,6 +46,7 @@ class Game {
       'character5': otherTeamCharacters[3].name,
       'wincount': wincount,
       'losecount': losecount,
+      'ffcount': ffcount,
       'mvpcount': getBalance()
     };
   }

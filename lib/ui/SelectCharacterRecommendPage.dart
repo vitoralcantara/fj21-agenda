@@ -2,28 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:valorant_self_statistics/model/Game.dart';
 
-class SelectCharacterRecommendPage extends StatefulWidget {
-  Game currentGame;
+import '../main.dart';
 
-  SelectCharacterRecommendPage(Game currentGame) {
-    this.currentGame = currentGame;
-  }
+class SelectCharacterRecommendPage extends StatefulWidget {
+  SelectCharacterRecommendPage() {}
 
   @override
-  State<StatefulWidget> createState() =>
-      _SelectCharacterRecommendPage(currentGame);
+  State<StatefulWidget> createState() => _SelectCharacterRecommendPage();
 }
 
 class _SelectCharacterRecommendPage
     extends State<SelectCharacterRecommendPage> {
-  Game currentGame;
   String valorantMapDropDownValue;
   String selectedCharacter;
   List<String> otherTeamCharacters = ["", "", "", ""];
 
-  _SelectCharacterRecommendPage(Game currentGame) {
-    this.currentGame = currentGame;
-  }
+  _SelectCharacterRecommendPage() {}
 
   @override
   Widget build(BuildContext context) {

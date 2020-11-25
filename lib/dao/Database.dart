@@ -23,6 +23,7 @@ class ValorantDatabase {
           "losecount INTEGER,"
           "balance INTEGER,"
           "mvpcount INTEGER,"
+          "ffcount INTEGER,"
           "PRIMARY KEY(map,selectedcharacter,character2,character3,character4,character5),"
           "FOREIGN KEY(selectedcharacter) REFERENCES character(name),"
           "FOREIGN KEY(character2) REFERENCES character(name),"
@@ -102,6 +103,7 @@ class ValorantDatabase {
           wincount: games[i]["wincount"],
           losecount: games[i]["losecount"],
           mvpcount: games[i]["mvpcount"],
+          ffcount: games[i]["ffcount"],
           vMap: ValorantMap(name: games[i]["map"]),
           selectedCharacter: Character(name: games[i]["selectedcharacter"]),
           otherTeamCharacters: [
@@ -112,4 +114,6 @@ class ValorantDatabase {
           ]);
     });
   }
+
+  static getAllGames() {}
 }
