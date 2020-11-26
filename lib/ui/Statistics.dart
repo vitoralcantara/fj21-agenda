@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:valorant_self_statistics/dao/Database.dart';
+import 'package:valorant_self_statistics/generated/l10n.dart';
 import 'package:valorant_self_statistics/model/Game.dart';
 
 import '../main.dart';
@@ -33,10 +34,10 @@ class _Statistics extends State<Statistics> {
                     case ConnectionState.waiting:
                       return CircularProgressIndicator();
                     case ConnectionState.done:
-                      return DataTable(columns: const <DataColumn>[
+                      return DataTable(columns: <DataColumn>[
                         DataColumn(
                           label: Text(
-                            'Mapa',
+                            S.of(context).map,
                             style: TextStyle(fontStyle: FontStyle.italic),
                           ),
                         ),

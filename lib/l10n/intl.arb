@@ -1,0 +1,8 @@
+{
+  "map": "Mapa",
+  "@map": {
+    "description": "mapa",
+    "type": "text",
+    "placeholders": {}
+  }
+}

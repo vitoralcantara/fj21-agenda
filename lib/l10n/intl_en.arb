@@ -1,0 +1,9 @@
+{
+  "@@locale": "en",
+  "map": "map",
+  "@map": {
+    "description": "map",
+    "type": "text",
+    "placeholders": {}
+  }
+}
