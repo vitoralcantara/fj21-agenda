@@ -22,7 +22,8 @@ class ValorantDatabase {
           "wincount INTEGER,"
           "losecount INTEGER,"
           "balance INTEGER,"
-          "mvpcount INTEGER,"
+          "mvpteamcount INTEGER,"
+          "mvpgamecount INTEGER,"
           "ffcount INTEGER,"
           "PRIMARY KEY(map,selectedcharacter,character2,character3,character4,character5),"
           "FOREIGN KEY(selectedcharacter) REFERENCES character(name),"
@@ -102,7 +103,8 @@ class ValorantDatabase {
       return Game(
           wincount: games[i]["wincount"],
           losecount: games[i]["losecount"],
-          mvpcount: games[i]["mvpcount"],
+          mvpteamcount: games[i]["mvpteamcount"],
+          mvpgamecount: games[i]["mvpgamecount"],
           ffcount: games[i]["ffcount"],
           vMap: ValorantMap(name: games[i]["map"]),
           selectedCharacter: Character(name: games[i]["selectedcharacter"]),

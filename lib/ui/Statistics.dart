@@ -85,7 +85,13 @@ class _Statistics extends State<Statistics> {
                         ),
                         DataColumn(
                           label: Text(
-                            'Vezes MVP',
+                            'Vezes MVP Equipe',
+                            style: TextStyle(fontStyle: FontStyle.italic),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Vezes MVP Jogo',
                             style: TextStyle(fontStyle: FontStyle.italic),
                           ),
                         ),
@@ -121,7 +127,8 @@ class _Statistics extends State<Statistics> {
           DataCell(Text(cp.otherTeamCharacters[0].name)),
           DataCell(Text(cp.wincount.toString())),
           DataCell(Text(cp.losecount.toString())),
-          DataCell(Text(cp.mvpcount.toString())),
+          DataCell(Text(cp.mvpteamcount.toString())),
+          DataCell(Text(cp.mvpgamecount.toString())),
           DataCell(Text(cp.ffcount.toString())),
         ],
       );
