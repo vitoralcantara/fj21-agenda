@@ -2,6 +2,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:valorant_self_statistics/model/Character.dart';
 import 'package:valorant_self_statistics/model/Game.dart';
+import 'package:valorant_self_statistics/model/Rank.dart';
 import 'package:valorant_self_statistics/model/ValorantMap.dart';
 
 class ValorantDatabase {
@@ -12,6 +13,7 @@ class ValorantDatabase {
     const initScripts = [
       "CREATE TABLE maps(name TEXT PRIMARY KEY)",
       "CREATE TABLE characters(name TEXT PRIMARY KEY)",
+      "CREATE TABLE ranks(name TEXT PRIMARY KEY)",
       "CREATE TABLE games("
           "map TEXT,"
           "selectedcharacter TEXT,"
@@ -19,6 +21,7 @@ class ValorantDatabase {
           "character3 TEXT, "
           "character4 TEXT, "
           "character5 TEXT,"
+          "rankid INTEGER,"
           "wincount INTEGER,"
           "losecount INTEGER,"
           "balance INTEGER,"
@@ -32,6 +35,7 @@ class ValorantDatabase {
           "FOREIGN KEY(character4) REFERENCES character(name)"
           "FOREIGN KEY(character5) REFERENCES character(name)"
           "FOREIGN KEY(map) REFERENCES map(name)"
+          "FOREIGN KEY(rank) REFERENCES ranks(rank)"
     ];
     final database = openDatabase(
         // Set the path to the database. Note: Using the `join` function from the
@@ -84,6 +88,29 @@ class ValorantDatabase {
     Character(name: "Sova").insertCharacter(_database);
     Character(name: "Viper").insertCharacter(_database);
     Character(name: "Skye").insertCharacter(_database);
+
+    Rank(name: "Ferro 1").insertRank(_database);
+    Rank(name: "Ferro 2").insertRank(_database);
+    Rank(name: "Ferro 3").insertRank(_database);
+    Rank(name: "Bronze 1").insertRank(_database);
+    Rank(name: "Bronze 2").insertRank(_database);
+    Rank(name: "Bronze 3").insertRank(_database);
+    Rank(name: "Prata 1").insertRank(_database);
+    Rank(name: "Prata 2").insertRank(_database);
+    Rank(name: "Prata 3").insertRank(_database);
+    Rank(name: "Ouro 1").insertRank(_database);
+    Rank(name: "Ouro 2").insertRank(_database);
+    Rank(name: "Ouro 3").insertRank(_database);
+    Rank(name: "Platina 1").insertRank(_database);
+    Rank(name: "Platina 2").insertRank(_database);
+    Rank(name: "Platina 3").insertRank(_database);
+    Rank(name: "Diamante 1").insertRank(_database);
+    Rank(name: "Diamante 2").insertRank(_database);
+    Rank(name: "Diamante 3").insertRank(_database);
+    Rank(name: "Imortal 1").insertRank(_database);
+    Rank(name: "Imortal 2").insertRank(_database);
+    Rank(name: "Imortal 3").insertRank(_database);
+    Rank(name: "Radiante").insertRank(_database);
   }
 
   static Future<List<Game>> getGames(Game game) async {

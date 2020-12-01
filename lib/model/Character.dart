@@ -18,7 +18,7 @@ class Character {
     //
     // In this case, replace any previous data.
     await db.insert(
-      'character',
+      'characters',
       this.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );

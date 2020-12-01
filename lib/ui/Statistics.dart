@@ -73,6 +73,12 @@ class _Statistics extends State<Statistics> {
                         ),
                         DataColumn(
                           label: Text(
+                            'Rank',
+                            style: TextStyle(fontStyle: FontStyle.italic),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
                             'Vitórias',
                             style: TextStyle(fontStyle: FontStyle.italic),
                           ),
@@ -125,6 +131,7 @@ class _Statistics extends State<Statistics> {
           DataCell(Text(cp.otherTeamCharacters[2].name)),
           DataCell(Text(cp.otherTeamCharacters[3].name)),
           DataCell(Text(cp.otherTeamCharacters[0].name)),
+          DataCell(Text(cp.rank.name)),
           DataCell(Text(cp.wincount.toString())),
           DataCell(Text(cp.losecount.toString())),
           DataCell(Text(cp.mvpteamcount.toString())),

@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:valorant_self_statistics/dao/Database.dart';
 import 'package:valorant_self_statistics/model/Character.dart';
 
+import 'Rank.dart';
 import 'ValorantMap.dart';
 
 class Game {
@@ -19,15 +20,18 @@ class Game {
   final int mvpgamecount;
   final int mvpteamcount;
   final int ffcount;
+  final Rank rank;
 
-  Game({this.wincount,
-    this.losecount,
-    this.vMap,
-    this.selectedCharacter,
-    this.otherTeamCharacters,
-    this.mvpgamecount,
-    this.mvpteamcount,
-    this.ffcount});
+  Game(
+      {this.wincount,
+      this.losecount,
+      this.rank,
+      this.vMap,
+      this.selectedCharacter,
+      this.otherTeamCharacters,
+      this.mvpgamecount,
+      this.mvpteamcount,
+      this.ffcount});
 
   int getBalance() {
     return wincount + mvpteamcount + 2 * mvpgamecount - losecount - ffcount;
@@ -47,6 +51,7 @@ class Game {
       'character5': otherTeamCharacters[3].name,
       'wincount': wincount,
       'losecount': losecount,
+      'rank': rank.name,
       'ffcount': ffcount,
       'mvpteamcount': mvpteamcount,
       'mvpgamecount': mvpgamecount,
@@ -63,7 +68,7 @@ class Game {
     //
     // In this case, replace any previous data.
     await db.insert(
-      'game',
+      'games',
       this.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
